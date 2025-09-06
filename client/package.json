@@ -2,7 +2,6 @@
   "name": "538andMe.io",
   "version": "2.0.0",
   "author": "Brandon Crosbie <bcrosb31@gmail.com>",
-  
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

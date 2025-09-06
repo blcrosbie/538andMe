@@ -1,8 +1,10 @@
-# 538andMe.io
-## Political Analysis Platform 
-A comprehensive React-based frontend for tracking congressional votes, representatives, and political analysis.
+# 538andMe.io - Political Analysis Platform 
+#### A comprehensive React-based frontend for tracking congressional votes, representatives, and political analysis.
 
-#### Version 2.0 COMING SOON!
+### Version 2.0 COMING SOON!
+
+
+
 
 ## 🚀 Quick Start
 
@@ -14,20 +16,20 @@ A comprehensive React-based frontend for tracking congressional votes, represent
 
 1. Clone or download the project files
 2. Install dependencies:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. Start the development server:
-   \`\`\`bash
+   ```bash
    npm start
-   \`\`\`
+   ```
 
 4. Open [http://localhost:3000](http://localhost:3000) to view in browser
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 src/
 ├── components/
 │   ├── common/           # Shared components (Header, AI Assistant)
@@ -36,7 +38,7 @@ src/
 ├── hooks/               # Custom React hooks
 ├── styles/              # CSS files
 └── App.jsx             # Main application component
-\`\`\`
+```
 
 ## 🎯 Features
 
@@ -61,16 +63,16 @@ src/
 ## 🔧 Development
 
 ### Available Scripts
-- \`npm start\` - Development server
-- \`npm run build\` - Production build
-- \`npm test\` - Run tests
-- \`npm run eject\` - Eject from Create React App
+- `npm start` - Development server
+- `npm run build` - Production build
+- `npm test` - Run tests
+- `npm run eject` - Eject from Create React App
 
 ### Environment Variables
-Create a \`.env\` file in the root directory:
-\`\`\`
+Create a `.env` file in the root directory:
+```
 REACT_APP_API_URL=your_api_url_here
-\`\`\`
+```
 
 ## 📱 Responsive Breakpoints
 - **Desktop**: 1200px+ (3-column layout)
