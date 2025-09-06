@@ -1,5 +1,4 @@
-
-// ParliamentDiagram.jsx - Parliament seating visualization
+// src/components/dashboard/ParliamentDiagram.jsx
 import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 
@@ -27,7 +26,7 @@ const ParliamentDiagram = ({
 
     // Create parliament seating
     const totalSeats = data.totalSeats || 435;
-    const rows = 8; // Number of concentric arcs
+    const rows = 8;
     const seatsPerRow = Math.ceil(totalSeats / rows);
 
     let seatIndex = 0;
@@ -66,6 +65,14 @@ const ParliamentDiagram = ({
        .attr('cx', d => d.x)
        .attr('cy', d => d.y)
        .attr('r', 4)
+       .attr('fill', d => {
+         switch(d.party) {
+           case 'democrat': return '#2563eb';
+           case 'republican': return '#dc2626';
+           case 'independent': return '#059669';
+           default: return '#9ca3af';
+         }
+       })
        .attr('stroke', '#fff')
        .attr('stroke-width', 0.5)
        .style('cursor', 'pointer')
@@ -76,43 +83,10 @@ const ParliamentDiagram = ({
        })
        .on('mouseover', function(event, d) {
          d3.select(this).attr('r', 6);
-         
-         // Show tooltip
-         const tooltip = d3.select('body')
-           .append('div')
-           .attr('class', 'tooltip')
-           .style('opacity', 0);
-
-         tooltip.transition()
-           .duration(200)
-           .style('opacity', 0.9);
-           
-         tooltip.html(`
-           <strong>${d.representative?.name || 'Vacant'}</strong><br/>
-           ${d.representative?.state || ''}<br/>
-           ${d.party.charAt(0).toUpperCase() + d.party.slice(1)}
-         `)
-           .style('left', (event.pageX + 10) + 'px')
-           .style('top', (event.pageY - 28) + 'px');
        })
        .on('mouseout', function() {
          d3.select(this).attr('r', 4);
-         d3.selectAll('.tooltip').remove();
        });
-
-    // Add majority line
-    const majoritySeats = Math.ceil(totalSeats / 2);
-    const majorityAngle = (majoritySeats / totalSeats) * Math.PI;
-    
-    svg.append('line')
-       .attr('class', 'majority-line')
-       .attr('x1', centerX)
-       .attr('y1', centerY)
-       .attr('x2', centerX - Math.cos(majorityAngle) * radius)
-       .attr('y2', centerY - Math.sin(majorityAngle) * radius)
-       .attr('stroke', '#666')
-       .attr('stroke-width', 2)
-       .attr('stroke-dasharray', '5,5');
 
     // Add seat count summary
     const summaryY = height - 80;
@@ -133,7 +107,14 @@ const ParliamentDiagram = ({
          
          g.append('circle')
           .attr('r', 8)
-          .attr('class', d.party)
+          .attr('fill', () => {
+            switch(d.party) {
+              case 'democrat': return '#2563eb';
+              case 'republican': return '#dc2626';
+              case 'independent': return '#059669';
+              default: return '#9ca3af';
+            }
+          })
           .attr('stroke', '#fff')
           .attr('stroke-width', 1);
          
@@ -143,6 +124,7 @@ const ParliamentDiagram = ({
           .attr('dy', '0.35em')
           .style('font-size', '14px')
           .style('font-weight', '600')
+          .style('fill', '#1f2937')
           .text(`${d.party.charAt(0).toUpperCase() + d.party.slice(1)}: ${d.count}`);
        });
 
