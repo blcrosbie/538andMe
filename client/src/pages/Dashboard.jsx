@@ -64,7 +64,7 @@ const Dashboard = () => {
             <h2 className="viz-title">
               {currentView === 'senate' ? 'United States Senate' : 
                currentView === 'house' ? 'House of Representatives' :
-               'Parliament View'}
+               'Chamber View'}
             </h2>
             <div className="viz-legend">
               <div className="legend-item">

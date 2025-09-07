@@ -51,7 +51,7 @@ const ControlPanel = ({
             className={`toggle-btn ${currentView === 'parliament' ? 'active' : ''}`}
             onClick={() => onViewChange('parliament')}
           >
-            Parliament
+            Chamber
           </button>
         </div>
       </div>

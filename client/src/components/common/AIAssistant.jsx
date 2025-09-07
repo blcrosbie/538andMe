@@ -13,7 +13,7 @@ const AIAssistant = () => {
 
   return (
     <div className="ai-assistant" onClick={handleClick}>
-      <span style={{ fontSize: '1.5rem' }}>🤖</span>
+      <span style={{ fontSize: '1.5rem' }}>💬</span>
     </div>
   );
 };
